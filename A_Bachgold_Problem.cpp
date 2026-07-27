@@ -7,7 +7,22 @@ vector<int> allPrime;
 
 void sieve ()
 {
+    vector<bool> primes(maxN, true);
+    for (int i = 2; i*i <= maxN; i++)
+    {
+        for (int j = i+i; j <= maxN; j+=i)
+        {
+            if (primes[j])
+                primes[j] = false;
+        }
+        
+    }
     
+    for (int i = 2; i < maxN; i++)
+    {
+        if (primes[i])
+            allPrime.push_back(i);
+    }
 }
 
 int main()
@@ -20,6 +35,26 @@ int main()
     int n;
     cin >> n;
 
+    if (n%2 == 0)
+    {
+        int a = n/2;
+        cout << a << endl;
+        for (int i = 0; i < a; i++)
+        {
+            cout << 2 << " ";
+        }
+        cout << endl;
+    }
+    else
+    {
+        int a = n/2;
+        cout << a << endl;
+        for (int i = 0; i < a-1; i++)
+        {
+            cout << 2 << " ";
+        }
+        cout << 3 << endl;
+    }
     
     return 0;
 }
